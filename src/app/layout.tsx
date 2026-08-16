@@ -4,11 +4,11 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Graham Hill — The Drummer Steps Forward",
+  title: "Graham Hill — Self-Titled",
   description:
-    "After years behind the kit with Beach House, Graham Hill steps forward with his debut solo album — an Alternative record built on restraint, emotion, and authenticity.",
+    "Graham Hill's debut solo album — self-titled. An Alternative record built on restraint, emotion, and authenticity.",
   openGraph: {
-    title: "Graham Hill — The Drummer Steps Forward",
+    title: "Graham Hill — Self-Titled",
     description: "Debut solo album — Alternative. Managed by Mid City Sound Studio.",
     type: "website",
   },

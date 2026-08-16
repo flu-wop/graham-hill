@@ -99,9 +99,7 @@ export default function Home() {
             animate="visible"
             className="headline text-[clamp(3rem,9vw,7.5rem)] text-cream leading-none mb-8"
           >
-            The Drummer
-            <br />
-            <span className="italic text-gold-gradient">Steps Forward</span>
+            Graham Hill
           </motion.h1>
 
           {/* Name + descriptor */}
@@ -112,11 +110,11 @@ export default function Home() {
             animate="visible"
             className="flex flex-col items-center gap-2 mb-12"
           >
-            <p className="font-sans text-sm tracking-[0.35em] text-cream/80 uppercase font-medium">
-              Graham Hill
+            <p className="font-serif italic text-lg text-cream/70">
+              Debut album, self-titled.
             </p>
             <p className="font-sans text-xs tracking-[0.25em] text-mist uppercase">
-              Debut Solo Album · Alternative · 2026
+              Alternative · 2026
             </p>
           </motion.div>
 
@@ -338,66 +336,6 @@ export default function Home() {
                 </div>
               ))}
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ COMPARABLES ════════════════════════════════════════════ */}
-      <section className="grain bg-charcoal py-24 md:py-32 px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={fadeUp}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="flex flex-col items-center text-center mb-16 gap-4"
-          >
-            <p className="chapter-label">In the Tradition Of</p>
-            <h2 className="headline text-[clamp(1.8rem,3.5vw,3rem)] text-cream">
-              The quiet transition.
-            </h2>
-            <p className="font-sans text-sm text-mist font-light max-w-md leading-8">
-              A tradition of respected band members stepping forward as
-              themselves — arriving fully formed, not competing with their past.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dennis Wilson",
-                album: "Pacific Ocean Blue",
-                desc: "The overlooked drummer who made a haunting, deeply personal masterpiece that endures decades later.",
-              },
-              {
-                name: "Levon Helm",
-                album: "Dirt Farmer",
-                desc: "Grammy-winning roots record full of land, family, and honest storytelling rooted in the American South.",
-              },
-              {
-                name: "Don Henley",
-                album: "Building the Perfect Beast",
-                desc: "Proved the drummer-to-solo artist transition could be both artistically rich and commercially meaningful.",
-              },
-            ].map(({ name, album, desc }, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
-                className="flex flex-col gap-4 p-7 border border-border/40 bg-dark/50 card-lift"
-              >
-                <div className="w-8 h-px bg-prairie/60" />
-                <div>
-                  <p className="font-serif text-lg text-cream font-light">{name}</p>
-                  <p className="font-serif italic text-sm text-gold/70 mt-0.5">{album}</p>
-                </div>
-                <p className="font-sans text-xs text-mist leading-7 font-light">{desc}</p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

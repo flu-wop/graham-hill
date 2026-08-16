@@ -28,9 +28,6 @@ export default function Navbar() {
         <span className="font-serif text-base font-light tracking-widest text-cream">
           GRAHAM HILL
         </span>
-        <span className="font-sans text-[0.55rem] tracking-[0.3em] text-mist uppercase mt-0.5">
-          The Drummer Steps Forward
-        </span>
       </Link>
 
       {/* Desktop links */}

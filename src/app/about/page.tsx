@@ -29,9 +29,7 @@ export default function AboutPage() {
             variants={fadeUp} custom={1} initial="hidden" animate="visible"
             className="headline text-[clamp(3rem,7vw,6.5rem)] text-cream leading-none"
           >
-            The Drummer
-            <br />
-            <span className="italic text-gold">Steps Forward</span>
+            Graham Hill
           </motion.h1>
         </div>
       </section>
