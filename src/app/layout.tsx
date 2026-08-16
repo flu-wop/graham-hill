@@ -6,10 +6,10 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Graham Hill — The Drummer Steps Forward",
   description:
-    "After years behind the kit with Beach House, Graham Hill steps forward with his debut solo album — raw, heartfelt Americana rooted in restraint, emotion, and authenticity.",
+    "After years behind the kit with Beach House, Graham Hill steps forward with his debut solo album — an Alternative record built on restraint, emotion, and authenticity.",
   openGraph: {
     title: "Graham Hill — The Drummer Steps Forward",
-    description: "Debut solo album — Americana / Roots. Managed by Mid City Sound Studio.",
+    description: "Debut solo album — Alternative. Managed by Mid City Sound Studio.",
     type: "website",
   },
 };

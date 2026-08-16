@@ -63,9 +63,12 @@ export default function AboutPage() {
               <p className="font-sans text-sm leading-9 text-mist font-light">
                 For most of his musical life, Graham Hill has been the one you
                 hear more than you see. The drummer holding the room, shaping the
-                feel, keeping the pulse. Years behind the kit with Beach House gave
-                him a musical education few songwriters receive — the art of
-                restraint, of space, of letting the song breathe.
+                feel, keeping the pulse. Years behind the kit with Beach House
+                (2008–2016, Teen Dream, Bloom, Depression Cherry) gave him a
+                musical education few songwriters receive — the art of restraint,
+                of space, of letting the song breathe. Before that, he played
+                drums and sang harmonies with a string of Bay Area bands —
+                The Parish, Papercuts, Vetiver.
               </p>
               <p className="font-serif italic text-xl text-cream/60 leading-relaxed">
                 "He learned to play what the song needed, not what the musician wanted."
@@ -77,14 +80,28 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="flex flex-col gap-6"
             >
+              <p className="chapter-label">The Lineage</p>
+              <div className="w-10 h-px bg-prairie/50" />
+              <p className="font-sans text-sm leading-9 text-mist font-light">
+                Music runs further back than the kit. His father, Steve Hill,
+                spent decades as house bassist for NPR's Mountain Stage and a
+                member of the Putnam County Pickers. The songwriting on this
+                record isn't an inherited aesthetic — it's a return to where he
+                came from.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp} custom={3} initial="hidden" whileInView="visible"
+              viewport={{ once: true }}
+              className="flex flex-col gap-6"
+            >
               <p className="chapter-label">The Sound</p>
               <div className="w-10 h-px bg-prairie/50" />
               <p className="font-sans text-sm leading-9 text-mist font-light">
-                The debut album lives in the Americana and Roots tradition — warm,
-                unhurried production, storytelling songs that earn their weight
-                line by line. The musical references are clear: Dennis Wilson's
-                private world, Levon Helm's land and family, the quiet sureness of
-                Gillian Welch. But the voice is his own.
+                The debut album is an Alternative record — warm, unhurried
+                production, storytelling songs that earn their weight line by
+                line. But the voice is his own.
               </p>
               <p className="font-sans text-sm leading-9 text-mist font-light">
                 Every arrangement serves the song. Nothing decorates what doesn't
@@ -94,7 +111,7 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              variants={fadeUp} custom={3} initial="hidden" whileInView="visible"
+              variants={fadeUp} custom={5} initial="hidden" whileInView="visible"
               viewport={{ once: true }}
               className="flex flex-col gap-6"
             >
@@ -110,7 +127,7 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              variants={fadeUp} custom={4} initial="hidden" whileInView="visible"
+              variants={fadeUp} custom={6} initial="hidden" whileInView="visible"
               viewport={{ once: true }}
             >
               <Link

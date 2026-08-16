@@ -116,7 +116,7 @@ export default function Home() {
               Graham Hill
             </p>
             <p className="font-sans text-xs tracking-[0.25em] text-mist uppercase">
-              Debut Solo Album · Americana / Roots · 2026
+              Debut Solo Album · Alternative · 2026
             </p>
           </motion.div>
 
@@ -198,9 +198,9 @@ export default function Home() {
 
             <p className="font-sans text-sm leading-8 text-mist font-light max-w-md">
               After years behind the kit with Beach House, Graham Hill steps
-              forward with something entirely his own — a deeply personal debut
-              in the Americana and Roots tradition. Warm, restrained production.
-              Storytelling songs that carry quiet weight and hard-won hope.
+              forward with something entirely his own — a deeply personal
+              Alternative debut. Warm, restrained production. Storytelling
+              songs that carry quiet weight and hard-won hope.
             </p>
 
             <p className="font-serif italic text-lg text-cream/60 leading-relaxed">
@@ -234,7 +234,7 @@ export default function Home() {
           >
             <p className="chapter-label">The Sound</p>
             <h2 className="headline text-[clamp(2.5rem,5vw,4rem)] text-cream">
-              Americana · Roots · Cinematic
+              Alternative · Cinematic
             </h2>
             <div className="w-12 h-px bg-gold/30" />
             <p className="font-sans text-sm text-mist font-light max-w-lg leading-8">
@@ -321,7 +321,7 @@ export default function Home() {
               {[
                 { item: "Electronic Press Kit (EPK)",         note: "Full bio, assets, contact" },
                 { item: "Lyric Films",                        note: "Sync-ready visuals"        },
-                { item: "Mood Films",                         note: "Americana / Roots aesthetic"},
+                { item: "Mood Films",                         note: "Alternative aesthetic"},
                 { item: "One-Sheets",                         note: "Per track + full album"    },
                 { item: "Sync Pitch Decks",                   note: "Genre, mood, placement notes"},
                 { item: "Hi-Res Album Art & Press Photos",    note: "Approved for publication"  },

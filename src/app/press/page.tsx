@@ -28,7 +28,7 @@ const assets = [
     items: [
       { name: "Sync Pitch Deck",            type: "PDF",  href: "#" },
       { name: "One-Sheet — Full Album",     type: "PDF",  href: "#" },
-      { name: "Mood Film — Americana",      type: "MP4",  href: "#" },
+      { name: "Mood Film — Alternative",    type: "MP4",  href: "#" },
       { name: "Lyric Films (Per Track)",    type: "ZIP",  href: "#" },
     ],
   },
@@ -39,17 +39,6 @@ const assets = [
       { name: "Fact Sheet",                 type: "PDF",  href: "#" },
     ],
   },
-];
-
-const syncDetails = [
-  { label: "Genre",       value: "Americana / Roots / Folk"             },
-  { label: "Mood",        value: "Reflective, Longing, Hopeful, Quiet"  },
-  { label: "Tempo",       value: "Slow to Mid — 65–95 BPM"              },
-  { label: "Vocal",       value: "Male lead, sparse harmonies"          },
-  { label: "Instruments", value: "Acoustic guitar, upright bass, piano, sparse percussion" },
-  { label: "Best For",    value: "Drama, Documentary, Prestige Advertising" },
-  { label: "Label",       value: "Independent"                          },
-  { label: "Rights",      value: "100% clearable — contact for licensing" },
 ];
 
 export default function PressPage() {
@@ -81,47 +70,24 @@ export default function PressPage() {
         </div>
       </section>
 
-      {/* Sync quick-facts */}
+      {/* Sync pointer */}
       <section className="grain bg-charcoal py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={fadeUp} custom={0} initial="hidden" whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-col gap-6 mb-12"
-          >
-            <p className="chapter-label">Sync Snapshot</p>
-            <h2 className="headline text-3xl text-cream">At a glance.</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-0">
-            {syncDetails.map(({ label, value }, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp} custom={i * 0.5} initial="hidden"
-                whileInView="visible" viewport={{ once: true }}
-                className="flex gap-6 py-5 border-b border-border/30 items-baseline"
-              >
-                <span className="font-sans text-xs tracking-[0.18em] uppercase text-mist/50 w-28 flex-shrink-0">
-                  {label}
-                </span>
-                <span className="font-sans text-sm text-cream/80 font-light leading-7">{value}</span>
-              </motion.div>
-            ))}
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <div className="flex flex-col gap-3">
+            <p className="chapter-label">Music Supervisors</p>
+            <h2 className="headline text-3xl text-cream">Sync details live here.</h2>
+            <p className="font-sans text-sm text-mist font-light leading-8 max-w-md">
+              Full sync snapshot, one-sheet download, and licensing contact
+              are on the dedicated Sync Licensing page.
+            </p>
           </div>
-
-          <motion.div
-            variants={fadeUp} custom={5} initial="hidden" whileInView="visible"
-            viewport={{ once: true }}
-            className="mt-10 flex gap-4"
+          <Link
+            href="/sync"
+            className="group flex items-center gap-2.5 bg-prairie hover:bg-prairie-dark text-parchment font-sans text-xs tracking-[0.2em] uppercase px-7 py-3.5 transition-colors duration-300 flex-shrink-0"
           >
-            <Link
-              href="/contact"
-              className="group flex items-center gap-2.5 bg-prairie hover:bg-prairie-dark text-parchment font-sans text-xs tracking-[0.2em] uppercase px-7 py-3.5 transition-colors duration-300"
-            >
-              Licensing Inquiry
-              <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
+            Sync Licensing
+            <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </section>
 

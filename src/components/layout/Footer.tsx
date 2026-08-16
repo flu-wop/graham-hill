@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <p className="font-serif text-2xl font-light text-cream tracking-wide">Graham Hill</p>
             <p className="font-sans text-xs tracking-[0.25em] text-mist uppercase mt-1">
-              Americana · Roots · 2026
+              Alternative · 2026
             </p>
           </div>
 
@@ -21,6 +21,7 @@ export default function Footer() {
                 { href: "/",        label: "Home"    },
                 { href: "/about",   label: "About"   },
                 { href: "/music",   label: "Music"   },
+                { href: "/sync",    label: "Sync Licensing" },
                 { href: "/press",   label: "Press & EPK" },
                 { href: "/contact", label: "Contact" },
               ].map(({ href, label }) => (

@@ -50,7 +50,7 @@ export default function MusicPage() {
             variants={fadeUp} custom={2} initial="hidden" animate="visible"
             className="font-sans text-sm text-mist mt-5 font-light max-w-md leading-8"
           >
-            Americana / Roots. Warm, restrained production.
+            Alternative. Warm, restrained production.
             Storytelling songs that carry quiet weight and hard-won hope.
           </motion.p>
         </div>
