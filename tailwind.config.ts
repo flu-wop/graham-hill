@@ -1,26 +1,19 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  // Brand colours, fonts and semantic tokens come from the shared IN-FLU-ENTIAL preset.
+  presets: [require("@flu-wop/design-system/tailwind-preset")],
   darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@flu-wop/design-system/src/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
       // ── Shared ecosystem tokens ──────────────────────────────────────
       colors: {
-        "studio-black": "#090909",
-        charcoal:       "#111111",
-        dark:           "#1A1A1A",
-        card:           "#1C1C1C",
-        border:         "#2A2A2A",
-        gold:           "#D4AF77",
-        "gold-light":   "#E8C97A",
-        "gold-dark":    "#B8935A",
-        cream:          "#F5EDD8",
-        mist:           "#A89880",
         // ── Graham Hill accent layer (Roots Cinema) ───────────────────
         prairie:        "#C4622A",  // burnt sienna — the campaign's signature
         "prairie-dark": "#9E4D1F",
