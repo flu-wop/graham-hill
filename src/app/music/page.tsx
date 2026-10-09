@@ -1,157 +1,101 @@
-"use client";
+import type { Metadata } from "next";
+import Image from "next/image";
+import SinglePlayer from "@/components/SinglePlayer";
+import { credits, site, songNotes, tracks } from "@/content/site";
 
-import { motion } from "framer-motion";
-import { Play, ExternalLink } from "lucide-react";
-
-const fadeUp = {
-  hidden:  { opacity: 0, y: 24 },
-  visible: (i = 0) => ({
-    opacity: 1, y: 0,
-    transition: { delay: i * 0.1, duration: 0.85, ease: [0.16, 1, 0.3, 1] },
-  }),
+export const metadata: Metadata = {
+  title: "Music",
+  description: `${site.album} — tracklist, credits and notes on the songs from ${site.artist}.`,
 };
 
-// Replace track list with real tracks when ready
-const tracks = [
-  { title: "Track 01", duration: "—:——", note: "Album opener"         },
-  { title: "Track 02", duration: "—:——", note: "First single"         },
-  { title: "Track 03", duration: "—:——", note: "Sync highlight"       },
-  { title: "Track 04", duration: "—:——", note: ""                     },
-  { title: "Track 05", duration: "—:——", note: ""                     },
-  { title: "Track 06", duration: "—:——", note: ""                     },
-  { title: "Track 07", duration: "—:——", note: "Closing track"        },
-];
-
-const streamingLinks = [
-  { name: "Spotify",        href: "#" },
-  { name: "Apple Music",    href: "#" },
-  { name: "Bandcamp",       href: "#" },
-  { name: "Amazon Music",   href: "#" },
-];
-
-export default function MusicPage() {
+export default function Music() {
   return (
     <>
-      {/* Hero */}
-      <section className="grain vignette relative pt-40 pb-24 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_70%_60%,rgba(196,98,42,0.05),transparent)]" />
-        <div className="max-w-5xl mx-auto relative z-10">
-          <motion.p
-            variants={fadeUp} custom={0} initial="hidden" animate="visible"
-            className="chapter-label mb-6"
-          >Music</motion.p>
-          <motion.h1
-            variants={fadeUp} custom={1} initial="hidden" animate="visible"
-            className="headline text-[clamp(3rem,7vw,6rem)] text-cream leading-none"
-          >
-            The Debut Album
-          </motion.h1>
-          <motion.p
-            variants={fadeUp} custom={2} initial="hidden" animate="visible"
-            className="font-sans text-sm text-mist mt-5 font-light max-w-md leading-8"
-          >
-            Alternative. Warm, restrained production.
-            Storytelling songs that carry quiet weight and hard-won hope.
-          </motion.p>
+      <header className="page-head">
+        <p className="label text-oxblood">Music</p>
+        <h1 className="sleeve-title text-[44px] sm:text-[64px] mt-5">{site.album}</h1>
+        <p className="mt-6 text-[22px]">
+          The debut album, {site.release}. {site.genre}.
+        </p>
+      </header>
+
+      <section className="mx-auto max-w-page px-5 sm:px-10 pt-12 sm:pt-16 grid gap-12 lg:grid-cols-[minmax(0,480px)_minmax(0,1fr)] lg:gap-20 items-start">
+        <div>
+          <Image
+            src="/images/cover.jpg"
+            alt={`${site.album} album cover: young Graham Hill with drumsticks, his father on guitar behind him`}
+            width={1200}
+            height={1200}
+            sizes="(min-width: 1024px) 480px, 100vw"
+            className="w-full h-auto shadow-[0_1px_0_#DCD3BE,0_18px_40px_-24px_rgba(35,27,23,0.45)]"
+          />
+          <div className="mt-10">
+            <p className="label text-muted mb-3">Listen</p>
+            <SinglePlayer />
+          </div>
+        </div>
+
+        <div>
+          <h2 className="label text-oxblood">Tracklist</h2>
+          <ol className="mt-6 border-t border-ink">
+            {tracks.map((t) => (
+              <li key={t.n} className="flex items-baseline gap-5 py-4 border-b border-rule">
+                <span className="label text-muted w-6 text-right shrink-0">{t.n}</span>
+                <span className="flex-1 min-w-0 text-[21px] leading-snug">
+                  {t.title}
+                  {t.feature && <span className="text-muted"> (feat. {t.feature})</span>}
+                  {t.single && <span className="label text-oxblood text-[12px] ml-3 align-middle">Single {t.single}</span>}
+                </span>
+                <span className="label text-muted text-[14px] shrink-0">{t.length}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-6 text-muted text-[17px]">
+            Streaming links arrive with each single. Full streaming embeds follow the album release.
+          </p>
         </div>
       </section>
 
-      {/* Album + tracklist */}
-      <section className="grain bg-charcoal py-24 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
-
-          {/* Album art placeholder */}
-          <motion.div
-            variants={fadeUp} custom={0} initial="hidden" whileInView="visible"
-            viewport={{ once: true }}
-            className="aspect-square bg-dark border border-border/40 relative overflow-hidden flex flex-col items-center justify-center gap-3"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(196,98,42,0.06),transparent_70%)]" />
-            <div className="w-12 h-px bg-gold/20 mb-2" />
-            <p className="chapter-label">Album Art</p>
-            <p className="font-serif italic text-mist/40 text-sm">Coming soon</p>
-            <p className="font-sans text-[0.6rem] tracking-widest text-mist/30 uppercase mt-1">
-              Graham Hill · 2026
-            </p>
-            <div className="w-12 h-px bg-gold/20 mt-2" />
-          </motion.div>
-
-          {/* Tracklist */}
-          <motion.div
-            variants={fadeUp} custom={1} initial="hidden" whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-col gap-6"
-          >
-            <div className="flex flex-col gap-1 mb-4">
-              <p className="chapter-label">Tracklist</p>
-              <h2 className="headline text-3xl text-cream font-light">Graham Hill</h2>
-              <p className="font-serif italic text-gold/60 text-base">Debut LP · 2026</p>
-            </div>
-
-            <div className="flex flex-col">
-              {tracks.map(({ title, duration, note }, i) => (
-                <div
-                  key={i}
-                  className="group flex items-center gap-4 py-4 border-b border-border/30 hover:border-gold/20 transition-colors cursor-default"
-                >
-                  <span className="font-mono text-xs text-mist/40 w-5 flex-shrink-0">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-sans text-sm text-cream/80 font-light group-hover:text-cream transition-colors truncate">
-                      {title}
-                    </p>
-                    {note && (
-                      <p className="font-sans text-[0.65rem] tracking-[0.15em] text-prairie/60 uppercase mt-0.5">
-                        {note}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-mist/30">{duration}</span>
-                    <Play size={11} className="text-mist/20 group-hover:text-gold/40 transition-colors flex-shrink-0" />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Streaming links */}
-            <div className="pt-4 flex flex-col gap-4">
-              <p className="chapter-label">Available On</p>
-              <div className="flex flex-wrap gap-3">
-                {streamingLinks.map(({ name, href }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    className="flex items-center gap-1.5 border border-border/50 hover:border-gold/40 text-mist hover:text-cream font-sans text-xs tracking-[0.15em] uppercase px-4 py-2 transition-all duration-200"
-                  >
-                    {name}
-                    <ExternalLink size={9} />
-                  </a>
+      <section className="mx-auto max-w-page px-5 sm:px-10 pt-24" aria-labelledby="notes">
+        <h2 id="notes" className="label text-oxblood">The songs, in his words</h2>
+        <div className="mt-8 grid gap-x-16 gap-y-14 md:grid-cols-2">
+          {songNotes.map((s) => (
+            <article key={s.title} className="border-t border-ink pt-6">
+              <p className="label text-muted text-[13px]">{s.label}</p>
+              <h3 className="sleeve-title text-[28px] mt-3">{s.title}</h3>
+              <div className="mt-5 space-y-4 text-[19px] leading-relaxed">
+                {s.text.map((para, i) => (
+                  <p key={i}>{para}</p>
                 ))}
               </div>
-            </div>
-          </motion.div>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* Player placeholder */}
-      <section className="grain bg-studio-black py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={fadeUp} custom={0} initial="hidden" whileInView="visible"
-            viewport={{ once: true }}
-            className="border border-border/40 p-10 flex flex-col items-center text-center gap-4"
-          >
-            <p className="chapter-label">Listen</p>
-            <p className="font-serif italic text-mist/50 text-lg">
-              Embed Spotify or Bandcamp player here
-            </p>
-            <p className="font-sans text-xs text-mist/30">
-              Replace this block with{" "}
-              <code className="font-mono text-gold/40">{"<iframe>"}</code> embed
-            </p>
-          </motion.div>
+      <section className="mx-auto max-w-page px-5 sm:px-10 pt-24" aria-labelledby="credits">
+        <h2 id="credits" className="label text-oxblood">Credits</h2>
+        <div className="mt-8 grid gap-12 md:grid-cols-2 border-t border-ink pt-8">
+          <div className="space-y-2 text-[18px]">
+            <p>{credits.writing}</p>
+            <p>{credits.production}</p>
+            <p>{credits.recording}</p>
+            <p>{credits.mixing}</p>
+            <div className="pt-4 space-y-1">
+              {credits.features.map((f) => (
+                <p key={f}>{f}</p>
+              ))}
+            </div>
+            <p className="pt-4">{credits.photos}</p>
+          </div>
+          <dl className="text-[17px]">
+            {credits.players.map(([name, parts]) => (
+              <div key={name} className="flex gap-4 py-2 border-b border-rule">
+                <dt className="w-[170px] shrink-0">{name}</dt>
+                <dd className="text-muted">{parts}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
     </>

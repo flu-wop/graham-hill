@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@flu-wop/design-system"],
-  turbopack: {},
+  async redirects() {
+    return [{ source: "/about", destination: "/bio", permanent: true }];
+  },
 };
 
 export default nextConfig;

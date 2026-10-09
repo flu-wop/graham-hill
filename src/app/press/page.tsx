@@ -1,144 +1,147 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Download, ArrowRight, FileText } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { contactFor, photos, pressPhotoOrder, priorWork, site, songNotes } from "@/content/site";
 
-const fadeUp = {
-  hidden:  { opacity: 0, y: 24 },
-  visible: (i = 0) => ({
-    opacity: 1, y: 0,
-    transition: { delay: i * 0.1, duration: 0.85, ease: [0.16, 1, 0.3, 1] },
-  }),
+export const metadata: Metadata = {
+  title: "Press",
+  description: `Press kit for ${site.artist}’s ${site.album}: bio, fast facts, photos and contact.`,
 };
 
-const assets = [
-  {
-    category: "Electronic Press Kit",
-    items: [
-      { name: "Full EPK (PDF)",            type: "PDF",  href: "#" },
-      { name: "Artist Bio — Long",          type: "DOC",  href: "#" },
-      { name: "Artist Bio — Short",         type: "DOC",  href: "#" },
-      { name: "Press Photo — Hi-Res",       type: "JPG",  href: "#" },
-      { name: "Album Art — Hi-Res",         type: "PNG",  href: "#" },
-    ],
-  },
-  {
-    category: "Sync Assets",
-    items: [
-      { name: "Sync Pitch Deck",            type: "PDF",  href: "#" },
-      { name: "One-Sheet — Full Album",     type: "PDF",  href: "#" },
-      { name: "Mood Film — Alternative",    type: "MP4",  href: "#" },
-      { name: "Lyric Films (Per Track)",    type: "ZIP",  href: "#" },
-    ],
-  },
-  {
-    category: "Press & Media",
-    items: [
-      { name: "Press Release",              type: "PDF",  href: "#" },
-      { name: "Fact Sheet",                 type: "PDF",  href: "#" },
-    ],
-  },
+const downloads = [
+  { href: "/press/GrahamHill_TakingInStars_OneSheet.pdf", label: "Press one-sheet", note: "PDF" },
+  { href: "/press/GrahamHill_TakingInStars_Cover_3000.jpg", label: "Album cover", note: "3000 × 3000 JPG" },
 ];
 
-export default function PressPage() {
+export default function Press() {
+  const email = contactFor("press");
+  const singles = songNotes.filter((s) => s.label.startsWith("Single"));
   return (
     <>
-      {/* Hero */}
-      <section className="grain vignette relative pt-40 pb-24 px-6 overflow-hidden">
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-prairie/50" />
-        <div className="max-w-5xl mx-auto relative z-10">
-          <motion.p
-            variants={fadeUp} custom={0} initial="hidden" animate="visible"
-            className="chapter-label mb-6"
-          >Press & EPK</motion.p>
-          <motion.h1
-            variants={fadeUp} custom={1} initial="hidden" animate="visible"
-            className="headline text-[clamp(3rem,7vw,6rem)] text-cream leading-none"
-          >
-            For Music Supervisors
-            <br />
-            <span className="italic text-gold">& Press</span>
-          </motion.h1>
-          <motion.p
-            variants={fadeUp} custom={2} initial="hidden" animate="visible"
-            className="font-sans text-sm text-mist mt-5 font-light max-w-lg leading-8"
-          >
-            All assets, sync details, and contact information for licensing
-            inquiries, editorial coverage, and playlist placement.
-          </motion.p>
-        </div>
-      </section>
+      <header className="page-head">
+        <p className="label text-oxblood">Press</p>
+        <h1 className="sleeve-title text-[44px] sm:text-[64px] mt-5">Press kit</h1>
+        <p className="mt-6 text-[22px] max-w-prose">
+          Press contact:{" "}
+          <a className="link" href={`mailto:${email}?subject=${encodeURIComponent(`Press — ${site.artist}`)}`}>
+            {email}
+          </a>
+        </p>
+      </header>
 
-      {/* Sync pointer */}
-      <section className="grain bg-charcoal py-20 px-6">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div className="flex flex-col gap-3">
-            <p className="chapter-label">Music Supervisors</p>
-            <h2 className="headline text-3xl text-cream">Sync details live here.</h2>
-            <p className="font-sans text-sm text-mist font-light leading-8 max-w-md">
-              Full sync snapshot, one-sheet download, and licensing contact
-              are on the dedicated Sync Licensing page.
+      <section className="mx-auto max-w-page px-5 sm:px-10 pt-12 sm:pt-16 grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:gap-20 items-start">
+        <div>
+          <h2 className="label text-oxblood">Short bio</h2>
+          <div className="mt-6 border-t border-ink pt-6 space-y-5 text-[20px] leading-relaxed max-w-prose">
+            <p>
+              Graham Hill is a songwriter and drummer based in New Orleans. His debut album, <em>{site.album}</em>, was
+              written by Hill and produced with Donald “Donny” Markowitz at Mid City Sound Studio, and arrives{" "}
+              {site.release}.
+            </p>
+            <p>
+              Hill was the drummer for Beach House from 2008 to 2016, playing on <em>Teen Dream</em> and{" "}
+              <em>Depression Cherry</em>, and has recorded with Papercuts, The Parish and his own project Roman Ruins.
+              His father, Steve Hill, was the house bassist for NPR’s <em>Mountain Stage</em>; the vintage photograph of
+              the two of them is the album’s cover.
             </p>
           </div>
-          <Link
-            href="/sync"
-            className="group flex items-center gap-2.5 bg-prairie hover:bg-prairie-dark text-parchment font-sans text-xs tracking-[0.2em] uppercase px-7 py-3.5 transition-colors duration-300 flex-shrink-0"
-          >
-            Sync Licensing
-            <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+          <Link href="/bio" className="label inline-block mt-6 link">
+            Full bio
           </Link>
+        </div>
+
+        <div>
+          <h2 className="label text-oxblood">Fast facts</h2>
+          <dl className="mt-6 border-t border-ink">
+            {[
+              ["Artist", site.artist],
+              ["Album", site.album],
+              ["Genre", site.genre],
+              ["Based in", site.location],
+              ["Release", site.release],
+              ["Producers", "Graham Hill & Donald Markowitz"],
+              ["Family", "Steve Hill (father) — house bassist, NPR’s Mountain Stage; founding member, Putnam County Pickers"],
+            ].map(([k, v]) => (
+              <div key={k} className="py-3 border-b border-rule">
+                <dt className="label text-muted text-[13px]">{k}</dt>
+                <dd className="mt-1 text-[18px] leading-snug">{v}</dd>
+              </div>
+            ))}
+            <div className="py-3 border-b border-rule">
+              <dt className="label text-muted text-[13px]">Prior work</dt>
+              <dd className="mt-1 text-[18px] leading-snug">
+                {priorWork.map(([band, role]) => (
+                  <span key={band} className="block">
+                    {band} — {role.toLowerCase()}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          </dl>
         </div>
       </section>
 
-      {/* Asset downloads */}
-      <section className="grain bg-studio-black py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={fadeUp} custom={0} initial="hidden" whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-col gap-2 mb-14"
-          >
-            <p className="chapter-label">Downloads</p>
-            <h2 className="headline text-3xl text-cream">Press Assets</h2>
-          </motion.div>
-
-          <div className="flex flex-col gap-12">
-            {assets.map(({ category, items }, ci) => (
-              <motion.div
-                key={ci}
-                variants={fadeUp} custom={ci} initial="hidden"
-                whileInView="visible" viewport={{ once: true }}
-              >
-                <p className="font-sans text-xs tracking-[0.2em] uppercase text-gold/60 mb-5 pb-3 border-b border-gold/10">
-                  {category}
-                </p>
-                <div className="flex flex-col gap-0">
-                  {items.map(({ name, type, href }, ii) => (
-                    <a
-                      key={ii}
-                      href={href}
-                      className="group flex items-center justify-between py-4 border-b border-border/25 hover:border-gold/20 transition-colors"
-                    >
-                      <div className="flex items-center gap-4">
-                        <FileText size={13} className="text-mist/30 group-hover:text-gold/40 transition-colors flex-shrink-0" />
-                        <span className="font-sans text-sm text-cream/75 group-hover:text-cream transition-colors font-light">
-                          {name}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-[0.6rem] text-mist/30 tracking-wider">
-                          {type}
-                        </span>
-                        <Download size={11} className="text-mist/20 group-hover:text-gold/50 transition-colors" />
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      <section className="mx-auto max-w-page px-5 sm:px-10 pt-24" aria-labelledby="singles">
+        <h2 id="singles" className="label text-oxblood">The singles</h2>
+        <div className="mt-8 grid gap-10 md:grid-cols-3">
+          {singles.map((s) => (
+            <article key={s.title} className="border-t border-ink pt-5">
+              <p className="label text-muted text-[13px]">{s.label}</p>
+              <h3 className="sleeve-title text-[24px] mt-3">{s.title}</h3>
+              <p className="mt-4 text-[18px] leading-relaxed">“{s.text[0]}”</p>
+            </article>
+          ))}
         </div>
+        <Link href="/music" className="label inline-block mt-8 link">
+          Notes on every single, in full
+        </Link>
+      </section>
+
+      <section className="mx-auto max-w-page px-5 sm:px-10 pt-24" aria-labelledby="photos">
+        <div className="flex flex-wrap items-baseline justify-between gap-4">
+          <h2 id="photos" className="label text-oxblood">Photos</h2>
+          <p className="label text-muted text-[13px]">Credit: {site.photoCredit} · Full-size TIFFs on request</p>
+        </div>
+        <ul className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6">
+          {pressPhotoOrder.map((key) => {
+            const p = photos[key];
+            return (
+              <li key={key}>
+                <div className="grain aspect-[4/5] overflow-hidden bg-sleeve">
+                  <Image
+                    src={`/images/${p.id}.webp`}
+                    width={p.w}
+                    height={p.h}
+                    alt={p.alt}
+                    sizes="(min-width: 1024px) 280px, 50vw"
+                    className="w-full h-full object-cover block"
+                  />
+                </div>
+                <a
+                  href={`/press/GrahamHill_${p.id}_CoryFontenot.jpg`}
+                  download
+                  className="label inline-flex items-center min-h-[44px] link no-underline hover:underline"
+                >
+                  Download JPG
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      <section className="mx-auto max-w-page px-5 sm:px-10 pt-16" aria-labelledby="downloads">
+        <h2 id="downloads" className="label text-oxblood">Downloads</h2>
+        <ul className="mt-6 border-t border-ink">
+          {downloads.map((d) => (
+            <li key={d.href} className="border-b border-rule">
+              <a href={d.href} download className="group flex items-baseline justify-between gap-4 py-5">
+                <span className="text-[22px] group-hover:text-oxblood transition-colors">{d.label}</span>
+                <span className="label text-muted text-[13px]">{d.note} ↓</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     </>
   );
