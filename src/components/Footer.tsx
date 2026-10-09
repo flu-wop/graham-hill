@@ -10,11 +10,6 @@ export default function Footer() {
         <p className="label">
           {site.genre} · {site.location}
         </p>
-        <p className="label">
-          <a className="hover:text-oxblood transition-colors" href={`mailto:${site.email}`}>
-            {site.email}
-          </a>
-        </p>
       </div>
     </footer>
   );

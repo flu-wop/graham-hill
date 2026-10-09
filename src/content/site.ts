@@ -13,9 +13,8 @@ export const site = {
   // Timeline target is January 22, 2027 — the EPK still marks the date "to be confirmed".
   release: "January 2027",
 
-  // One address for now (brief: "structured so it's easy to split later").
-  // Interim: the marketing partner's inbox until Graham confirms a press contact.
-  email: "flu.wop@gmail.com",
+  // No address is published until Graham confirms the press contact (brief: "structured so it's
+  // easy to split later"). Fill these in and the mailto links appear everywhere automatically.
   contacts: {
     press: "", // set when the press contact is confirmed
     sync: "",
@@ -32,9 +31,12 @@ export const site = {
   photoCredit: "Cory Fontenot",
 };
 
+// Returns "" until an address is confirmed; pages show a plain note instead of a mailto link.
 export function contactFor(kind: keyof typeof site.contacts) {
-  return site.contacts[kind] || site.email;
+  return site.contacts[kind] || site.contacts.general || "";
 }
+
+export const contactPending = "Contact details are being confirmed. Inquiries are handled through Mid City Sound, New Orleans.";
 
 export type Track = {
   n: number;

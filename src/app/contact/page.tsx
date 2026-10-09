@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { contactFor, site } from "@/content/site";
+import { contactFor, contactPending, site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -28,16 +28,28 @@ export default function Contact() {
               <li key={r.kind} className="grid gap-2 sm:grid-cols-[260px_1fr_auto] sm:items-baseline sm:gap-8 py-7 border-b border-rule">
                 <span className="sleeve-title text-[24px]">{r.label}</span>
                 <span className="text-muted">{r.note}</span>
-                <a
-                  className="link text-[20px] break-all"
-                  href={`mailto:${email}?subject=${encodeURIComponent(`${r.subject} — ${site.artist}`)}`}
-                >
-                  {email}
-                </a>
+                {email ? (
+                  <a
+                    className="link text-[20px] break-all"
+                    href={`mailto:${email}?subject=${encodeURIComponent(`${r.subject} — ${site.artist}`)}`}
+                  >
+                    {email}
+                  </a>
+                ) : (
+                  <span className="label text-muted text-[13px]">Coming soon</span>
+                )}
               </li>
             );
           })}
         </ul>
+        {!rows.some((r) => contactFor(r.kind)) && (
+          <p className="mt-8 text-[20px] max-w-prose">{contactPending}</p>
+        )}
+        <p className="mt-6">
+          <a className="link label" href="/press/GrahamHill_TakingInStars_PressKit.zip" download>
+            Press kit (ZIP) ↓
+          </a>
+        </p>
       </section>
     </>
   );

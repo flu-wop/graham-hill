@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { contactFor, photos, pressPhotoOrder, priorWork, site, songNotes } from "@/content/site";
+import { contactFor, contactPending, photos, pressPhotoOrder, priorWork, site, songNotes } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Press",
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 const downloads = [
+  { href: "/press/GrahamHill_TakingInStars_PressKit.zip", label: "Complete press kit", note: "ZIP · one-sheet, cover, photos" },
   { href: "/press/GrahamHill_TakingInStars_OneSheet.pdf", label: "Press one-sheet", note: "PDF" },
   { href: "/press/GrahamHill_TakingInStars_Cover_3000.jpg", label: "Album cover", note: "3000 × 3000 JPG" },
 ];
@@ -22,11 +23,25 @@ export default function Press() {
         <p className="label text-oxblood">Press</p>
         <h1 className="sleeve-title text-[44px] sm:text-[64px] mt-5">Press kit</h1>
         <p className="mt-6 text-[22px] max-w-prose">
-          Press contact:{" "}
-          <a className="link" href={`mailto:${email}?subject=${encodeURIComponent(`Press — ${site.artist}`)}`}>
-            {email}
-          </a>
+          {email ? (
+            <>
+              Press contact:{" "}
+              <a className="link" href={`mailto:${email}?subject=${encodeURIComponent(`Press — ${site.artist}`)}`}>
+                {email}
+              </a>
+            </>
+          ) : (
+            "Everything a writer, editor or programmer needs, in one download."
+          )}
         </p>
+        <a
+          href="/press/GrahamHill_TakingInStars_PressKit.zip"
+          download
+          className="label inline-flex items-center justify-center min-h-[52px] px-7 mt-8 bg-ink text-paper hover:bg-oxblood transition-colors"
+        >
+          Download the press kit (ZIP) ↓
+        </a>
+        <p className="label text-muted text-[13px] mt-3">One-sheet PDF · album cover · eight photos · credit Cory Fontenot</p>
       </header>
 
       <section className="mx-auto max-w-page px-5 sm:px-10 pt-12 sm:pt-16 grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:gap-20 items-start">

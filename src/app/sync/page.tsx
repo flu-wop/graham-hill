@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Photo from "@/components/Photo";
-import { contactFor, credits, site, tracks } from "@/content/site";
+import { contactFor, contactPending, credits, site, tracks } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Sync Licensing",
@@ -21,15 +21,17 @@ export default function Sync() {
             go, missing someone, first love, a mind that won’t switch off at night.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href={`mailto:${email}?subject=${subject}`}
-              className="label inline-flex items-center justify-center min-h-[48px] px-6 bg-ink text-paper hover:bg-oxblood transition-colors"
-            >
-              Licensing inquiry
-            </a>
+            {email && (
+              <a
+                href={`mailto:${email}?subject=${subject}`}
+                className="label inline-flex items-center justify-center min-h-[48px] px-6 bg-ink text-paper hover:bg-oxblood transition-colors"
+              >
+                Licensing inquiry
+              </a>
+            )}
             <a
               href="/press/GrahamHill_TakingInStars_OneSheet.pdf"
-              className="label inline-flex items-center justify-center min-h-[48px] px-6 border border-ink hover:bg-ink hover:text-paper transition-colors"
+              className={`label inline-flex items-center justify-center min-h-[48px] px-6 ${email ? "border border-ink hover:bg-ink hover:text-paper" : "bg-ink text-paper hover:bg-oxblood"} transition-colors`}
               download
             >
               One-sheet (PDF)
@@ -99,11 +101,17 @@ export default function Sync() {
             <p>{credits.production}.</p>
             <p>Featured vocals: Tif Lamson (“Promise That You Live For”), phin (“Pink House Blues”).</p>
             <p>
-              For master and publishing clearance, quotes and screeners, write to{" "}
-              <a className="link" href={`mailto:${email}?subject=${subject}`}>
-                {email}
-              </a>
-              .
+              {email ? (
+                <>
+                  For master and publishing clearance, quotes and screeners, write to{" "}
+                  <a className="link" href={`mailto:${email}?subject=${subject}`}>
+                    {email}
+                  </a>
+                  .
+                </>
+              ) : (
+                <>Master and publishing clearance, quotes and screeners: the one-sheet has the details. {contactPending}</>
+              )}
             </p>
           </div>
         </div>
