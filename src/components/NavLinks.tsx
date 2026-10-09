@@ -23,7 +23,7 @@ export default function NavLinks() {
               <Link
                 href={l.href}
                 aria-current={active ? "page" : undefined}
-                className={`label inline-block py-2 transition-colors ${
+                className={`label inline-flex items-center min-h-[44px] transition-colors ${
                   active ? "text-oxblood" : "text-ink hover:text-oxblood"
                 }`}
               >

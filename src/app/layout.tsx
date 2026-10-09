@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.artist} — ${site.album}`, template: `%s — ${site.artist}` },
   description,
+  alternates: { canonical: "./" },
   openGraph: {
     title: `${site.artist} — ${site.album}`,
     description,

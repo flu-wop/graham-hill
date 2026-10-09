@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 const downloads = [
   { href: "/press/GrahamHill_TakingInStars_PressKit.zip", label: "Complete press kit", note: "ZIP · one-sheet, cover, photos" },
+  { href: "/press/GrahamHill_TakingInStars_PressKit_WebRes.zip", label: "Press kit, web resolution", note: "ZIP · light version for phones" },
   { href: "/press/GrahamHill_TakingInStars_OneSheet.pdf", label: "Press one-sheet", note: "PDF" },
   { href: "/press/GrahamHill_TakingInStars_Cover_3000.jpg", label: "Album cover", note: "3000 × 3000 JPG" },
 ];
