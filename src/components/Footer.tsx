@@ -13,7 +13,7 @@ export default function Footer() {
         <p className="label">
           Designed by{" "}
           <a className="hover:text-oxblood transition-colors" href="https://in-flu-ential.vercel.app" target="_blank" rel="noopener noreferrer">
-            IN-FLU-ENTIAL LLC
+            IN-FLU-ENTIAL
           </a>
         </p>
       </div>
