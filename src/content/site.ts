@@ -10,13 +10,14 @@ export const site = {
   location: "New Orleans, LA",
   url: "https://graham-hill.vercel.app",
 
-  // Timeline target is January 22, 2027 — the EPK still marks the date "to be confirmed".
-  release: "January 2027",
+  // Confirmed by Graham (Oct 24 text): full album release January 22, 2027.
+  release: "January 22, 2027",
 
-  // No address is published until Graham confirms the press contact (brief: "structured so it's
-  // easy to split later"). Fill these in and the mailto links appear everywhere automatically.
+  // Press contact confirmed by Graham: Maddie Corbin (Lucky Bird Media). Sync and general stay empty
+  // until Graham names them (brief: "structured so it's easy to split later"). Fill these in and the
+  // mailto links appear everywhere automatically.
   contacts: {
-    press: "", // set when the press contact is confirmed
+    press: "maddie@luckybirdmedia.com",
     sync: "",
     general: "",
   },
@@ -47,10 +48,10 @@ export type Track = {
 };
 
 export const tracks: Track[] = [
-  { n: 1, title: "Better Ways", length: "4:18", single: 3 },
+  { n: 1, title: "Better Ways", length: "4:17", single: 3 },
   { n: 2, title: "Your Own River", length: "3:08" },
-  { n: 3, title: "Monster In My Head", length: "2:46", single: 2 },
-  { n: 4, title: "Gravel Ghost", length: "4:40", single: 1 },
+  { n: 3, title: "Monster In My Head", length: "2:46", single: 1 },
+  { n: 4, title: "Gravel Ghost", length: "4:40", single: 2 },
   { n: 5, title: "Taking In Stars", length: "3:30" },
   { n: 6, title: "Promise That You Live For", length: "3:50", feature: "Tif Lamson" },
   { n: 7, title: "Heart Like The Sun", length: "4:18" },
@@ -59,30 +60,32 @@ export const tracks: Track[] = [
   { n: 10, title: "Wrong Place Saloon", length: "8:26" },
 ];
 
-// The lead single. Add the audio file (or a preview URL) when the master is ready.
+// The lead single. Single order per Graham (Oct 24 text): Monster In My Head (Oct 29, with the
+// album announcement), Gravel Ghost (Nov 19), Better Ways (Jan 12). Add the audio file (or a
+// preview URL) when the master is ready.
 export const leadSingle = {
-  title: "Gravel Ghost",
-  length: "4:40",
+  title: "Monster In My Head",
+  length: "2:46",
   audioSrc: "",
-  status: "First single — out soon",
+  status: "First single — October 29",
 };
 
 // Graham's own words, from "Graham Hill - Artist Quotes".
 export const songNotes: { title: string; label: string; text: string[] }[] = [
   {
-    title: "Gravel Ghost",
-    label: "Single 1",
-    text: [
-      "This song is about letting go of what no longer serves. The images and story are autobiographical, taken from my high school days growing up in rural West Virginia. I was driving home from my girlfriend’s house late at night and totaled my car by hitting a deer. It was really traumatic, and caused me to rethink pretty much everything I was doing at that point in life, from my relationships, habits, and patterns of behavior that were keeping me from growing.",
-      "The ‘hungry ghost’ metaphor is less of the traditional Buddhist meaning or symbolism, and more about the specter of my lower self that I realized was holding me back.",
-    ],
-  },
-  {
     title: "Monster In My Head",
-    label: "Single 2",
+    label: "Single 1",
     text: [
       "I wrote this song after having a late night conversation with my son when he was having trouble falling asleep consistently as he was hitting his teenage years. The line “When I hear the smallest thing, and it snowballs into a scream” was pretty much verbatim how he described the issue to me. His particular experience was music playing repeatedly that he couldn’t stop.",
       "It really resonated with me, as someone who has an active mind and sometimes obsessive tendency to overthink, especially when there are unresolved or uncertain things playing out in my current day-to-day reality.",
+    ],
+  },
+  {
+    title: "Gravel Ghost",
+    label: "Single 2",
+    text: [
+      "This song is about letting go of what no longer serves. The images and story are autobiographical, taken from my high school days growing up in rural West Virginia. I was driving home from my girlfriend’s house late at night and totaled my car by hitting a deer. It was really traumatic, and caused me to rethink pretty much everything I was doing at that point in life, from my relationships, habits, and patterns of behavior that were keeping me from growing.",
+      "The ‘hungry ghost’ metaphor is less of the traditional Buddhist meaning or symbolism, and more about the specter of my lower self that I realized was holding me back.",
     ],
   },
   {
@@ -108,6 +111,7 @@ export const credits = {
   production: "Produced by Graham Hill & Donald Markowitz",
   recording: "Recorded at Mid City Sound Studio, New Orleans, March–September 2026",
   mixing: "Mixed by Mack Major in New Orleans",
+  mastering: "Mastered by Christopher Colbert at National Freedom Studio, Cottage Grove, Oregon",
   features: [
     "Tif (Teddy) Lamson — vocals on “Promise That You Live For”",
     "phin (Phin Choukas) — vocals on “Pink House Blues”",

@@ -5,7 +5,7 @@ import Photo from "@/components/Photo";
 import { site, songNotes } from "@/content/site";
 
 export default function Home() {
-  const gravel = songNotes[0];
+  const gravel = songNotes.find((s) => s.title === "Gravel Ghost")!;
   return (
     <>
       {/* Hero: the cover photograph does the work */}
@@ -28,7 +28,7 @@ export default function Home() {
             <p className="sleeve-title text-oxblood text-[20px] sm:text-[24px] mt-5">{site.album}</p>
           </div>
           <p className="text-[24px] sm:text-[26px] leading-snug max-w-[460px]">
-            The debut album, {site.release}. The first song is “Gravel Ghost.”
+            The debut album, {site.release}. The first song is “Monster In My Head,” October 29.
           </p>
           <div className="max-w-[520px]">
             <SinglePlayer />

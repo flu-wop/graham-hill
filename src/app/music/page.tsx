@@ -81,6 +81,7 @@ export default function Music() {
             <p>{credits.production}</p>
             <p>{credits.recording}</p>
             <p>{credits.mixing}</p>
+            <p>{credits.mastering}</p>
             <div className="pt-4 space-y-1">
               {credits.features.map((f) => (
                 <p key={f}>{f}</p>
